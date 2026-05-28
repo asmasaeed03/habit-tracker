@@ -2,7 +2,7 @@
 
 ## 1. How to Run
 No install or build step needed.
-1. Clone the repo: `git clone <your-repo-url>`
+1. Clone the repo: `git clone https://github.com/asmasaeed03/habit-tracker.git`
 2. Open `index.html` in any browser.
 
 ## 2. Stack & Design Choices
