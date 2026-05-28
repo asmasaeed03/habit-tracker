@@ -7,8 +7,32 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>Habit Tracker</header>
-
+    <header>
+        <div class="header-inner">
+          <div class="header-left">
+            <h1>⚡ Habit Tracker</h1>
+            <p>Build streaks. Stay consistent. Win every day.</p>
+          </div>
+          <div class="header-stats">
+            <div class="stat-item">
+              <span class="stat-number" id="totalHabits">0</span>
+              <span class="stat-label">Habits</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" id="totalStreaks">0</span>
+              <span class="stat-label">Best Streak</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="hero">
+        <p class="daily-quote" id="dailyQuote"></p>
+        <div class="hero-inner">
+          <div class="hero-badge">✨ Track your daily habits</div>
+          <h2 class="hero-title">Small habits.<br/>Big results.</h2>
+          <p class="hero-sub">Stay consistent, build streaks, and become the best version of yourself — one day at a time.</p>
+        </div>
+      </section>
     <main>
         <!--Add Habit form-->
         <div class="add-habit">
@@ -28,7 +52,9 @@
   
       <!-- Empty State -->
       <div id="emptyState">
-        <p>No habits yet. Add one above to get started! 🌱</p>
+        <span class="empty-icon">🌱</span>
+        <h2>No habits yet</h2>
+        <p>Add your first habit above and start building your streak!</p>
       </div>
     </main>
   

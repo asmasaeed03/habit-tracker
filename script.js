@@ -6,7 +6,7 @@ let weekOffset = 0;
 // ── Helpers ────────────────────────────────────────────
 function getWeekDates(offset = 0) {
   const today = new Date();
-  const day = today.getDay(); // 0=Sun
+  const day = today.getDay();
   const monday = new Date(today);
   monday.setDate(today.getDate() - ((day + 6) % 7) + offset * 7);
   return Array.from({ length: 7 }, (_, i) => {
@@ -17,7 +17,7 @@ function getWeekDates(offset = 0) {
 }
 
 function dateKey(date) {
-  return date.toISOString().slice(0, 10); // "2026-05-28"
+  return date.toISOString().slice(0, 10);
 }
 
 function todayKey() {
@@ -45,6 +45,50 @@ function saveData() {
   localStorage.setItem('checks', JSON.stringify(checks));
 }
 
+// ── Stats ──────────────────────────────────────────────
+function updateStats() {
+  document.getElementById('totalHabits').textContent = habits.length;
+  const best = habits.reduce((max, h) => Math.max(max, getStreak(h.id)), 0);
+  document.getElementById('totalStreaks').textContent = best;
+}
+
+// ── Daily Quote ────────────────────────────────────────
+const quotes = [
+  "Small steps every day lead to big changes.",
+  "Consistency is the key to achievement.",
+  "You don't have to be great to start, but you have to start to be great.",
+  "Success is the sum of small efforts repeated day in and day out.",
+  "Motivation gets you started. Habit keeps you going.",
+  "The secret of your future is hidden in your daily routine.",
+  "Every day is a new opportunity to grow.",
+  "Build the habit. Live the life.",
+];
+
+function showQuote() {
+  const idx = new Date().getDate() % quotes.length;
+  const el = document.getElementById('dailyQuote');
+  if (el) el.textContent = `"${quotes[idx]}"`;
+}
+
+// ── Confetti ───────────────────────────────────────────
+function launchConfetti() {
+  const colors = ['#7c6ff7', '#a78bfa', '#60a5fa', '#34d399', '#fb923c'];
+  for (let i = 0; i < 40; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'confetti-dot';
+    dot.style.cssText = `
+      left: ${Math.random() * 100}vw;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      animation-duration: ${0.8 + Math.random() * 1}s;
+      animation-delay: ${Math.random() * 0.3}s;
+      width: ${6 + Math.random() * 8}px;
+      height: ${6 + Math.random() * 8}px;
+    `;
+    document.body.appendChild(dot);
+    setTimeout(() => dot.remove(), 2000);
+  }
+}
+
 // ── Render ─────────────────────────────────────────────
 function render() {
   const weekDates = getWeekDates(weekOffset);
@@ -65,7 +109,10 @@ function render() {
   const grid = document.getElementById('habitGrid');
   grid.innerHTML = '';
 
-  if (habits.length === 0) return;
+  if (habits.length === 0) {
+    updateStats();
+    return;
+  }
 
   // Header row
   const header = document.createElement('div');
@@ -116,7 +163,27 @@ function render() {
     row.appendChild(streakCell);
 
     grid.appendChild(row);
+
+    // Progress bar
+    const completedDays = weekDates.filter(d => {
+      const key = `${habit.id}_${dateKey(d)}`;
+      return !!checks[key];
+    }).length;
+    const totalDays = weekDates.filter(d => dateKey(d) <= todayStr).length;
+    const progressPercent = totalDays > 0 ? Math.round((completedDays / totalDays) * 100) : 0;
+
+    const progressRow = document.createElement('div');
+    progressRow.className = 'progress-row';
+    progressRow.innerHTML = `
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" style="width: ${progressPercent}%"></div>
+      </div>
+      <span class="progress-label">${completedDays}/${totalDays} this week · ${progressPercent}%</span>
+    `;
+    grid.appendChild(progressRow);
   });
+
+  updateStats();
 }
 
 // ── Actions ────────────────────────────────────────────
@@ -148,7 +215,9 @@ function renameHabit(id) {
 
 function toggleCheck(habitId, dateStr) {
   const key = `${habitId}_${dateStr}`;
+  const wasChecked = checks[key];
   checks[key] = !checks[key];
+  if (!wasChecked) launchConfetti();
   saveData();
   render();
 }
@@ -163,4 +232,5 @@ document.getElementById('nextWeek').onclick = () => { weekOffset++; render(); };
 document.getElementById('todayBtn').onclick = () => { weekOffset = 0; render(); };
 
 // ── Init ───────────────────────────────────────────────
+showQuote();
 render();
