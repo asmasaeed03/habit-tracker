@@ -98,3 +98,100 @@
     color: #999;
     font-size: 1.1rem;
   }
+
+  /* Grid */
+.grid-header, .grid-row {
+    display: grid;
+    grid-template-columns: 200px repeat(7, 1fr) 60px;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  
+  .grid-header {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  
+  .habit-name-col {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+  }
+  
+  .habit-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .day-col {
+    text-align: center;
+    padding: 8px 4px;
+    border-radius: 8px;
+  }
+  
+  .day-col.today {
+    background: #ede9fe;
+    color: #4f46e5;
+    font-weight: 700;
+  }
+  
+  .day-cell {
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #4f46e5;
+    transition: all 0.15s;
+  }
+  
+  .day-cell:hover:not(.future) {
+    border-color: #4f46e5;
+    background: #ede9fe;
+  }
+  
+  .day-cell.checked {
+    background: #4f46e5;
+    border-color: #4f46e5;
+    color: white;
+  }
+  
+  .day-cell.today {
+    border-color: #4f46e5;
+  }
+  
+  .day-cell.future {
+    background: #f9fafb;
+    border-color: #f3f4f6;
+    cursor: default;
+    color: #ddd;
+  }
+  
+  .streak-col {
+    text-align: center;
+    font-weight: 700;
+    color: #f97316;
+    font-size: 0.9rem;
+  }
+  
+  .delete-btn {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 4px;
+  }
+  
+  .delete-btn:hover {
+    color: #ef4444;
+  }
