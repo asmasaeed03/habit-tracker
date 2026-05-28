@@ -5,7 +5,7 @@ A single-page habit tracker with weekly streaks, built with vanilla HTML, CSS, a
 ## How to Run
 
 1. Clone the repository:
-     `git clone https://github.com/asmasaeed03/habit-tracker.git`
+    `git clone https://github.com/asmasaeed03/habit-tracker.git`
 2. Open `index.html` in your browser — no install or build step needed.
 
 ## Features
