@@ -195,3 +195,37 @@
   .delete-btn:hover {
     color: #ef4444;
   }
+
+  /* Responsive */
+@media (max-width: 600px) {
+    .grid-header, .grid-row {
+      grid-template-columns: 120px repeat(7, 1fr) 50px;
+      gap: 2px;
+    }
+  
+    .habit-name {
+      font-size: 0.8rem;
+    }
+  
+    .day-cell {
+      height: 32px;
+      font-size: 0.9rem;
+    }
+  
+    .grid-header {
+      font-size: 0.75rem;
+    }
+  
+    main {
+      margin: 16px auto;
+    }
+  
+    header h1 {
+      font-size: 1.4rem;
+    }
+  
+    .week-nav {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  }
