@@ -35,7 +35,14 @@ checkmark is toggled to screen readers. With more time I would add
 
 ## 4. AI Usage
 I used Claude to generate the initial JavaScript logic (state management,
-localStorage, streak calculation, week navigation) and the CSS grid layout.
+localStorage, streak calculation, week navigation, confetti animation,
+progress bars, and daily quotes) and all CSS styling.
+
+**One thing I changed:** The AI generated the progress bar showing only
+`X/7 days` for every day of the week. I changed the total count to only
+include days up to today (`weekDates.filter(d => dateKey(d) <= todayStr)`)
+so future days don't count against the percentage — showing 2/3 on Wednesday
+is more accurate and motivating than showing 2/7.t.
 
 **One thing I changed:** The AI gave me fixed pixel widths for the grid columns
 (`grid-template-columns: 200px 60px 60px...`). I changed the day columns to

@@ -16,3 +16,6 @@ git clone <your-repo-url>
 - Streak counter per habit
 - Week navigation (prev/next/today)
 - All data persists across page reloads via localStorage
+- Weekly progress bar per habit (X/7 days · %)
+- Confetti animation when a habit is checked
+- Daily motivational quote that changes every day
