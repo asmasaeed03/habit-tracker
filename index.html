@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <link reel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>Habit Tracker</header>
+
+    <main>
+        <!--Add Habit form-->
+        <div class="add-habit">
+            <input type="text" id="habitInput" placeholder="e.g. Read 30 min">
+            <button id="addBtn" > Add Habit</button>
+        </div>
+        <!-- Week Navigation -->
+    <div class="week-nav">
+        <button id="prevWeek">← Prev</button>
+        <span id="weekLabel"></span>
+        <button id="nextWeek">Next →</button>
+        <button id="todayBtn">Today</button>
+      </div>
+  
+      <!-- Habit Grid -->
+      <div id="habitGrid"></div>
+  
+      <!-- Empty State -->
+      <div id="emptyState">
+        <p>No habits yet. Add one above to get started! 🌱</p>
+      </div>
+    </main>
+  
+    <script src="script.js"></script>
+  </body>
+  </html>
+    </main>
+</body>
+</html>
