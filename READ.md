@@ -1,0 +1,18 @@
+# Habit Tracker
+
+A single-page habit tracker with weekly streaks, built with vanilla HTML, CSS, and JavaScript.
+
+## How to Run
+
+1. Clone the repository:
+git clone <your-repo-url>
+2. Open `index.html` in your browser — no install or build step needed.
+
+## Features
+
+- Add, rename (double-click), and delete habits
+- Weekly grid with checkmarks
+- Today's column is highlighted
+- Streak counter per habit
+- Week navigation (prev/next/today)
+- All data persists across page reloads via localStorage
